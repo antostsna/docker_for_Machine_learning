@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -it -v /home/$USER:/home oil:1.1 /bin/bash
+docker run -it --net=host -e DISPLAY --volume /tmp/.x11-unix -v /home/$USER:/home/student oil:1.6 /bin/bash

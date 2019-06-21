@@ -6,9 +6,16 @@ MAINTAINER anto "m07158031@o365.mcut.edu.tw"
 USER root
 WORKDIR /root
 
+# Use C.UTF-8 locale to avoid issues with ASCII encoding
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+ENV locale-gen en_US.UTF-8
+ENV dpkg-reconfigure locales
+
 RUN yes | unminimize \
-  && apt-get update \
-  && apt-get install -y --no-install-recommends \
+	&& apt-get update \
+	&& apt-get install -qqy x11-apps \
+	&& apt-get install -y --no-install-recommends \
 		apt-utils \
  		nano \
 		git \
@@ -24,26 +31,31 @@ RUN yes | unminimize \
   		python3-pip \
 		python3-dev \
 		man-db \
-  && rm -r /var/lib/apt/lists/* \
-  && cd /usr/local/bin \
-  && ln -s /usr/bin/python3 python \
-  && pip3 install --upgrade pip 
-
+		firefox \
+		libcanberra-gtk-module \
+		libcanberra-gtk3-module \
+	&& apt-get autoremove -y \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+	&& cd /usr/local/bin \
+	&& ln -s /usr/bin/python3 python \
+	&& pip3 install --upgrade pip \
+	&& pip install --upgrade setuptools
+  
 COPY requirements.txt /root
 RUN pip install -r requirements.txt
 
 # Create user "Student" with sudo powers
-RUN useradd -m student && \
-    usermod -aG sudo student && \
-    echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers && \
-    cp /root/.bashrc /home/student/ 
+RUN useradd -m student \
+	&& usermod -aG sudo student \
+	&& echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
+	&& cp /root/.bashrc /home/student/ \
+	&& chown -R --from=root student /home/student 
 
-# Use C.UTF-8 locale to avoid issues with ASCII encoding
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
-
-WORKDIR /home
+WORKDIR /home/student
+ENV HOME /home/student
 ENV USER student
 USER student
+ENV PATH /home/student/.local/bin:$PATH
 
 CMD [ "/bin/bash" ]
