@@ -35,6 +35,8 @@ RUN yes | unminimize \
   		python3-pip \
 		python3-dev \
 		dbus-x11 \
+		x11-xserver-utils \
+		net-tools \
 		man-db \
 		firefox \
 		libcanberra-gtk-module \
