@@ -6,6 +6,8 @@ MAINTAINER anto "m07158031@o365.mcut.edu.tw"
 USER root
 WORKDIR /root
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Use C.UTF-8 locale to avoid issues with ASCII encoding
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
@@ -18,6 +20,7 @@ RUN yes | unminimize \
 	&& apt-get install -y --no-install-recommends \
 		apt-utils \
  		nano \
+		gedit \
 		git \
 		make \
 		sudo \
@@ -26,14 +29,17 @@ RUN yes | unminimize \
 		unzip \
 		curl \ 
 		wget \
+		gdb \
 		software-properties-common \
 		pkg-config \
   		python3-pip \
 		python3-dev \
+		dbus-x11 \
 		man-db \
 		firefox \
 		libcanberra-gtk-module \
 		libcanberra-gtk3-module \
+		python3-tk \
 	&& apt-get autoremove -y \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
