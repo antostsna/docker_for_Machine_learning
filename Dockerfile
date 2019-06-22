@@ -2,11 +2,10 @@
 
 FROM ubuntu:18.04
 MAINTAINER anto "m07158031@o365.mcut.edu.tw"
+ENV DEBIAN_FRONTEND noninteractive
 
 USER root
 WORKDIR /root
-
-ENV DEBIAN_FRONTEND noninteractive
 
 # Use C.UTF-8 locale to avoid issues with ASCII encoding
 ENV LC_ALL=C.UTF-8
@@ -35,8 +34,13 @@ RUN yes | unminimize \
   		python3-pip \
 		python3-dev \
 		dbus-x11 \
+		x11-xserver-utils \
+		net-tools \
 		man-db \
 		firefox \
+		xorg \
+		xterm \
+		openbox \
 		libcanberra-gtk-module \
 		libcanberra-gtk3-module \
 		python3-tk \
@@ -50,6 +54,9 @@ RUN yes | unminimize \
   
 COPY requirements.txt /root
 RUN pip install -r requirements.txt
+
+RUN python -m bash_kernel.install
+RUN install_c_kernel
 
 # Create user "Student" with sudo powers
 RUN useradd -m student \

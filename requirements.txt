@@ -1,5 +1,8 @@
 jupyter
+tornado==4.5.3
 notebook==5.6.0
+bash_kernel
+jupyter-c-kernel
 numpy
 pandas
 matplotlib
@@ -10,4 +13,3 @@ tensorflow
 ipython
 opencv-python
 Pillow
-SimpleCV
