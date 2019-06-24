@@ -8,6 +8,7 @@ USER root
 WORKDIR /root
 
 # Use C.UTF-8 locale to avoid issues with ASCII encoding
+RUN apt-get install -y language-pack-en
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV locale-gen en_US.UTF-8
@@ -17,6 +18,11 @@ RUN yes | unminimize \
 	&& apt-get update \
 	&& apt-get install -qqy x11-apps \
 	&& apt-get install -y --no-install-recommends \
+		openssh-server \
+		build-essential \
+		gcc \
+		libsqlite3-dev \
+		sqlite3 \
 		apt-utils \
  		nano \
 		gedit \
