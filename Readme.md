@@ -7,5 +7,4 @@
 
 ## Run container from images, follow command
 * sh Docker.sh 
-<p> or
 * bash Docker.sh
