@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DISPLAY=':0'
+echo $DISPLAY
 xhost +
 
-docker run -it --net=host -e DISPLAY --volume /tmp/.x11-unix -v /home/$USER:/home/student/workdir oil:3.5 /bin/bash
+docker run --privileged=true -it --net=host -e DISPLAY --volume /tmp/.x11-unix -v ~/Moil_docker:/home/student/workdir oil:1.1 /bin/bash

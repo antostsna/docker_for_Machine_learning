@@ -65,7 +65,7 @@ RUN useradd -m student \
 	&& cp /root/.bashrc /home/student/ \
 	&& chown -R --from=root student /home/student 
 
-WORKDIR /home/student
+WORKDIR /home/student/workdir
 ENV HOME /home/student
 ENV USER student
 USER student
