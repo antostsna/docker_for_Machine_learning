@@ -7,7 +7,7 @@ for i in $( cat users.txt ); do
     cp run.sh /home/$i
     mkdir /home/$i/workdir
     cd /home/$i/workdir/
-    echo Wellcome $i, hope you enjoy the lecture. Fell free to ask some question when you get problem. Thank You !!!! >>Readme.txt
+    echo Wellcome $i to MOIL system, hope you enjoy the lecture. Fell free to ask some question when you get problem. Thank You !!!! >>Readme.txt
     mkdir /home/$i/workdir/Documents
     mkdir /home/$i/workdir/Data
     chmod 700 /home/$i
