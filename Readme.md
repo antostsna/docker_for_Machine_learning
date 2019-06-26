@@ -7,13 +7,13 @@ This system is used for build a classroom system where a teacher can easily mana
 * easy to manage the apps 
 * can clone x11-Linux from parent OS to running user interface apps
 
-## 1. Build images
+### 1. Build images
 
 To build image from dockerfile, go to inside folder where docker file  located and write the command line:
 
 - docker build -t *name-images*:tag/version .
 
-## 2. Adduser and Deluser
+### 2. Adduser and Deluser
 
 In classroom have so many student where the student must have same environment. so in this system, to add user you must have file user.txt where the content is the student list. after that sun the bash script 
 
@@ -23,7 +23,13 @@ and to delete user
 
 * sh del_user.sh
 
-## 3. How its work
+### 3. Run container
+
+Make sure when add new user you also share the run.sh from setting_env folder to home directory new user. so when you want to running container using new user account, just run bash script like command bellow this
+
+*  sh run.sh
+
+### 4. How its work
 
 Picture bellow this is explain how the system work.
 
