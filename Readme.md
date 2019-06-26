@@ -15,11 +15,11 @@ To build image from dockerfile, go to inside folder where docker file  located a
 
 ### 2. Adduser and Deluser
 
-In classroom have so many student where the student must have same environment. so in this system, to add user you must have file user.txt where the content is the student list. after that sun the bash script 
+In classroom have so many student where the student must have same environment. so in this system, to add user you must have file user.txt where the content is the student list. after that run the bash script using comand bellow this. 
 
 * sh add_user.sh
 
-and to delete user 
+and this comand is for delete user.
 
 * sh del_user.sh
 
