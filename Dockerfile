@@ -8,7 +8,6 @@ USER root
 WORKDIR /root
 
 # Use C.UTF-8 locale to avoid issues with ASCII encoding
-RUN apt-get install -y language-pack-en
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 ENV locale-gen en_US.UTF-8
@@ -76,5 +75,8 @@ ENV HOME /home/student
 ENV USER student
 USER student
 ENV PATH /home/student/.local/bin:$PATH
+
+# Avoid first use of sudo warning.
+RUN touch ~/.sudo_as_admin_successful
 
 CMD [ "/bin/bash" ]

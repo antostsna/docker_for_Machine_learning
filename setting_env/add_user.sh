@@ -5,7 +5,6 @@ for i in $( cat users.txt ); do
     echo "$i:123456" | chpasswd
     setfacl -m user:$i:rw /var/run/docker.sock
     cp run.sh /home/$i
-    chmod 777 /home/$i/run.sh
     mkdir /home/$i/workdir
     cd /home/$i/workdir/
     echo Wellcome $i, hope you enjoy the lecture. Fell free to ask some question when you get problem. Thank You !!!! >>Readme.txt
