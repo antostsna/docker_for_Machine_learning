@@ -11,6 +11,7 @@ for i in $( cat users.txt ); do
     cd /home/$i/workdir/
     echo Wellcome $i to MOIL system, hope you enjoy the lecture. Fell free to ask some question when you get problem. Thank You !!!! >>Readme.txt
     mkdir /home/$i/workdir/Documents
+    mkdir /home/$i/workdir/Downloads
     mkdir /home/$i/workdir/Data
     chmod 700 /home/$i
     chmod -R 777 /home/$i/workdir/

@@ -78,5 +78,8 @@ ENV PATH /home/student/.local/bin:$PATH
 
 # Avoid first use of sudo warning.
 RUN touch ~/.sudo_as_admin_successful
+COPY install.sh /tmp
+RUN sudo chmod +x /tmp/install.sh
+RUN sudo sh -c "/tmp/install.sh"
 
 CMD [ "/bin/bash" ]
