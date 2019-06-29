@@ -42,3 +42,8 @@
 
 5. create new_user
    * **sudo adduser "new_user_name"**
+   
+   
+reference :
+1. https://www.azureunali.com/linux-ubuntu-18-04-xrdp-remote-desktop-config-problem/
+2. http://c-nergy.be/blog/?p=13390
