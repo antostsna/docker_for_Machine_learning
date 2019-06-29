@@ -35,7 +35,7 @@ Picture bellow this is explain how the system work.
 
 
 
-<img src="/setting_env/12.jpg">
+<img src="/Xrdp_setting/12.jpg">
 
 
 
