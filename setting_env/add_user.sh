@@ -16,7 +16,7 @@ for i in $( cat users.txt ); do
     mkdir /home/$i/workdir/Data
     chmod 700 /home/$i
     chmod -R 777 /home/$i/workdir/
-    chmod 764 /home/$i/workdir/Readme.txt
+    chmod =r /home/$i/workdir/Readme.txt
     echo "user $i created !!!"
 
 done
