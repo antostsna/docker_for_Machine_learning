@@ -76,6 +76,11 @@ ENV USER student
 USER student
 ENV PATH /home/student/.local/bin:$PATH
 
+#change baground shell
+RUN echo 'PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\]'' >> ~/.bashrc
+RUN echo 'echo -ne "\033]10;#000000\007"' >> ~/.bashrc
+RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> ~/.bashrc
+
 # Avoid first use of sudo warning.
 RUN touch ~/.sudo_as_admin_successful
 COPY install.sh /tmp
