@@ -67,24 +67,24 @@ RUN install_c_kernel
 RUN useradd -m student \
 	&& usermod -aG sudo student \
 	&& echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
-	&& cp /root/.bashrc /home/student/ \
-	&& chown -R --from=root student /home/student 
+	&& cp /root/.bashrc /home \
+	&& chown -R --from=root student /home 
 
-WORKDIR /home/student/workdir
+WORKDIR /home/student
 ENV HOME /home/student
 ENV USER student
 USER student
 ENV PATH /home/student/.local/bin:$PATH
-
-#change baground shell
-RUN echo 'echo -ne "\033]10;#000000\007"' >> ~/.bashrc
-RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> ~/.bashrc
-RUN echo 'alias exit='echo -ne "\033]110;\007\033]111;\007";""exit' >> ~/.bashrc
 
 # Avoid first use of sudo warning.
 RUN touch ~/.sudo_as_admin_successful
 COPY install.sh /tmp
 RUN sudo chmod +x /tmp/install.sh
 RUN sudo sh -c "/tmp/install.sh"
+
+#change baground shell
+RUN echo 'echo -ne "\033]10;#000000\007"' >> ~/.bashrc
+RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> ~/.bashrc
+RUN echo 'alias exit='echo -ne "\033]110;\007\033]111;\007";""exit'' >> ~/.bashrc
 
 CMD [ "/bin/bash" ]

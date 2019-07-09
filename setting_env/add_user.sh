@@ -10,7 +10,7 @@ for i in $( cat users.txt ); do
     setfacl -m user:$i:rw /var/run/docker.sock
     mkdir /home/$i/workdir
     cd /home/$i/workdir/
-    echo Wellcome $i to MOIL system, hope you enjoy the lecture. Fell free to ask some question when you get problem. Thank You !!!! >>Readme.txt
+    echo Wellcome $i to MOIL_Ubuntu system.Good Luck !!!! >>Readme.txt
     mkdir /home/$i/workdir/Documents
     mkdir /home/$i/workdir/Downloads
     mkdir /home/$i/workdir/Data

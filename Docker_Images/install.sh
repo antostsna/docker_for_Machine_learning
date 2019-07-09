@@ -1,3 +1,3 @@
 #!/bin/bash
 
-chmod 777 -R ~/workdir
+chmod 777 -R /home
