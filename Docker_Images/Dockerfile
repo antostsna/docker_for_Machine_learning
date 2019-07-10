@@ -67,7 +67,7 @@ RUN install_c_kernel
 RUN useradd -m student \
 	&& usermod -aG sudo student \
 	&& echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
-	&& cp /root/.bashrc /home \
+	&& cp /root/.bashrc /home/student \
 	&& chown -R --from=root student /home 
 
 WORKDIR /home/student
@@ -83,7 +83,8 @@ RUN sudo chmod +x /tmp/install.sh
 RUN sudo sh -c "/tmp/install.sh"
 
 #change baground shell
-RUN echo 'echo -ne "\033]10;#000000\007"' >> ~/.bashrc
+RUN echo 'export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\w\$ "' >> ~/.bashrc
+RUN echo 'echo -ne "\033]10;#430064\007"' >> ~/.bashrc
 RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> ~/.bashrc
 RUN echo 'alias exit='echo -ne "\033]110;\007\033]111;\007";""exit'' >> ~/.bashrc
 
