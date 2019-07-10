@@ -66,28 +66,28 @@ RUN python -m bash_kernel.install
 RUN install_c_kernel
 
 # Create user "Student" with sudo powers
-RUN useradd -m student \
-	&& usermod -aG sudo student \
+RUN useradd -m sudoer \
+	&& usermod -aG sudo sudoer \
 	&& echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
-	&& cp /root/.bashrc /home/student \
-	&& chown -R --from=root student /home 
+	&& sudo usermod -s /bin/bash sudoer \
+	&& cp /root/.bashrc /home \
+	&& chown -R --from=root sudoer /home
 
-WORKDIR /home/student
-ENV HOME /home/student
-ENV USER student
-USER student
-ENV PATH /home/student/.local/bin:$PATH
+WORKDIR /home/sudoer/
+ENV HOME /home
+ENV USER sudoer
+USER sudoer
+ENV PATH /home/.local/bin:$PATH
 
 # Avoid first use of sudo warning.
-RUN touch ~/.sudo_as_admin_successful
+RUN touch /home/.sudo_as_admin_successful
 COPY install.sh /tmp
 RUN sudo chmod +x /tmp/install.sh
-RUN sudo sh -c "/tmp/install.sh"
+RUN sudo bash -c "/tmp/install.sh"
 
 #change baground shell
-RUN echo 'export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\w\$ "' >> ~/.bashrc
-RUN echo 'echo -ne "\033]10;#430064\007"' >> ~/.bashrc
-RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> ~/.bashrc
-RUN echo 'alias exit='echo -ne "\033]110;\007\033]111;\007";""exit'' >> ~/.bashrc
+RUN echo 'echo -ne "\033]10;#430064\007"' >> /home/.bashrc
+RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> /home/.bashrc
+RUN echo 'HOME=/home/sudoer' >> /home/.bashrc
 
 CMD [ "/bin/bash" ]
