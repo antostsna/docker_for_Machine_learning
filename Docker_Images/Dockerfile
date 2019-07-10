@@ -23,6 +23,7 @@ RUN yes | unminimize \
 		libsqlite3-dev \
 		sqlite3 \
 		apt-utils \
+		xdg-utils \
  		nano \
 		gedit \
 		git \
