@@ -34,6 +34,7 @@ RUN yes | unminimize \
 		curl \ 
 		wget \
 		gdb \
+		g++ \
 		software-properties-common \
 		pkg-config \
   		python3-pip \
