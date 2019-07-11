@@ -70,24 +70,25 @@ RUN useradd -m sudoer \
 	&& usermod -aG sudo sudoer \
 	&& echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
 	&& sudo usermod -s /bin/bash sudoer \
-	&& cp /root/.bashrc /home \
-	&& chown -R --from=root sudoer /home
+	&& cp /root/.bashrc /home/sudoer/ \
+	&& mkdir /home/sudoer/workdir \
+	&& chown -R --from=root sudoer /home/sudoer
 
-WORKDIR /home/sudoer/
-ENV HOME /home
+WORKDIR /home/sudoer/workdir
+ENV HOME /home/sudoer
 ENV USER sudoer
 USER sudoer
-ENV PATH /home/.local/bin:$PATH
+ENV PATH $HOME/.local/bin:$PATH
 
 # Avoid first use of sudo warning.
-RUN touch /home/.sudo_as_admin_successful
+RUN touch $HOME/.sudo_as_admin_successful
 COPY install.sh /tmp
 RUN sudo chmod +x /tmp/install.sh
 RUN sudo bash -c "/tmp/install.sh"
 
 #change baground shell
-RUN echo 'echo -ne "\033]10;#430064\007"' >> /home/.bashrc
-RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> /home/.bashrc
-RUN echo 'HOME=/home/sudoer' >> /home/.bashrc
+RUN echo 'echo -ne "\033]10;#430064\007"' >> $HOME/.bashrc
+RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> $HOME/.bashrc
+RUN echo 'HOME=/home/sudoer/workdir' >> $HOME/.bashrc
 
 CMD [ "/bin/bash" ]
