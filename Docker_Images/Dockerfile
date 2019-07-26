@@ -71,10 +71,10 @@ RUN useradd -m sudoer \
 	&& echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
 	&& sudo usermod -s /bin/bash sudoer \
 	&& cp /root/.bashrc /home/sudoer/ \
-	&& mkdir /home/sudoer/workdir \
+	#&& mkdir /home/sudoer/workdir \
 	&& chown -R --from=root sudoer /home/sudoer
 
-WORKDIR /home/sudoer/workdir
+WORKDIR /home/sudoer
 ENV HOME /home/sudoer
 ENV USER sudoer
 USER sudoer
@@ -89,6 +89,6 @@ RUN sudo bash -c "/tmp/install.sh"
 #change baground shell
 RUN echo 'echo -ne "\033]10;#430064\007"' >> $HOME/.bashrc
 RUN echo 'echo -ne "\033]11;#FFFFFF\007"' >> $HOME/.bashrc
-RUN echo 'HOME=/home/sudoer/workdir' >> $HOME/.bashrc
+#RUN echo 'HOME=/home/sudoer/workdir' >> $HOME/.bashrc
 
 CMD [ "/bin/bash" ]
