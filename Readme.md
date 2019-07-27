@@ -100,3 +100,7 @@ Install docker following the guideline installation for your Operating System (O
 
 [3. Run docker without sudo  in Linux](https://linoxide.com/linux-how-to/use-docker-without-sudo-ubuntu/)  
 
+[4. docker Volumes](https://docs.docker.com/storage/volumes/)
+
+[5. Setting docker after installation](https://docs.docker.com/install/linux/linux-postinstall/)
+
