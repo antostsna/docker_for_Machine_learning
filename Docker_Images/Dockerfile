@@ -82,9 +82,6 @@ ENV PATH $HOME/.local/bin:$PATH
 
 # Avoid first use of sudo warning.
 RUN touch $HOME/.sudo_as_admin_successful
-COPY install.sh /tmp
-RUN sudo chmod +x /tmp/install.sh
-RUN sudo bash -c "/tmp/install.sh"
 
 #change baground shell
 RUN echo 'echo -ne "\033]10;#430064\007"' >> $HOME/.bashrc
