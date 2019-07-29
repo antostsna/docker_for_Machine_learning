@@ -6,7 +6,7 @@ jupyter-c-kernel
 numpy
 pandas
 matplotlib
-Keras
+Keras==2.1.2
 scipy
 seaborn
 scikit-learn
