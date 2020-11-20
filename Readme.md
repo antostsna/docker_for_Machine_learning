@@ -1,5 +1,4 @@
-### Docker Image For Machine Learning
-
+### Docker Image For Digital Image Processing and Machine Learning
 *email: m07158031@o365.mcut.edu.tw*
 
 ---
