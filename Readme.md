@@ -1,9 +1,9 @@
 ### Docker Image For Digital Image Processing and Machine Learning
-*email: m07158031@o365.mcut.edu.tw*
+*email: haryanto462@gmail.com*
 
 ---
 
-This docker image running Ubuntu operating system (OS) include package library and framework for doing machine learning program with setting user Interface application. this image can work properly in **windows** or in **Linux**.  
+This docker image running Ubuntu operating system (OS) include package library and framework for doing machine learning program with setting user Interface application. this docker image can work properly in **windows** or in **Linux**.  
 
 #### Specs:
 
